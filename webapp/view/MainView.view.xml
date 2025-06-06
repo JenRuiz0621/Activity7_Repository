@@ -1,6 +1,44 @@
-<mvc:View controllerName="com.acn.training.activity7.controller.MainView"
-    xmlns:mvc="sap.ui.core.mvc"
-    xmlns="sap.m">
-    <Page id="page" title="{i18n>title}">
-    </Page>
+<mvc:View
+  controllerName="com.acn.training.activity7.controller.MainView"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns="sap.m">
+
+  <Table
+    id="productTable"
+    items="{
+      path: '/Products',
+      sorter: { path: 'ProductName', descending: false },
+      filters: [{ path: 'Discontinued', operator: 'EQ', value1: false }]
+    }"
+    inset="false"
+    headerText="{i18n>title}">
+
+    <columns>
+      <Column id="_IDGenColumn1">
+        <Text id="_IDGenText" text="{i18n>columnProduct}" />
+      </Column>
+      <Column id="_IDGenColumn2">
+        <Text id="_IDGenText1" text="{i18n>columnSupplier}" />
+      </Column>
+      <Column id="_IDGenColumn3">
+        <Text id="_IDGenText2" text="{i18n>columnPrice}" />
+      </Column>
+    </columns>
+
+    <items>
+      <ColumnListItem id="_IDGenColumnListItem">
+        <cells>
+          <ObjectIdentifier id="_IDGenObjectIdentifier"
+            title="{ProductName}"
+            text="{ProductID}" />
+
+          <Text id="_IDGenText3" text="{SupplierID}" />
+
+          <ObjectIdentifier id="_IDGenObjectIdentifier1"
+            title="{path: 'UnitPrice', type: 'sap.ui.model.type.Currency', formatOptions: { showMeasure: false }}"
+            text="{QuantityPerUnit}" />
+        </cells>
+      </ColumnListItem>
+    </items>
+  </Table>
 </mvc:View>
